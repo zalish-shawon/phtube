@@ -1,3 +1,4 @@
+
 const AllCategoryData = async () => {
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
     const data = await response.json();
@@ -20,27 +21,34 @@ const loadCatData = (catItem) => {
 };
 
 const handleSingleCategory = async (categoryId) => {
-    if (categoryId === '1005') {
-        const noContent = document.getElementById('noContent-container')
-        noContent.innerHTML = ""
-        const div = document.createElement('div')
-        div.innerHTML = `<div class="text-center flex flex-col justify-center items-center mt-32">
-        <img class="" src="images/Icon.png" alt="">
-        <h1 class="text-3xl">Oops!! Sorry, There is no content here</h1>
-    </div>`
-    noContent.appendChild(div)
-        
-    }
+    
     
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
     const data = await response.json()
     
     const cardConatiner = document.getElementById('card-container')
     cardConatiner.innerHTML = ""
+
+    if (categoryId === '1005') {
+        const noContent = document.getElementById('noContent-container')
+        noContent.innerHTML = ''
+        const div = document.createElement('div')
+        div.innerHTML = `<div class="text-center flex flex-col justify-center items-center mt-32">
+        <img class="" src="images/Icon.png" alt="">
+        <h1 class="text-3xl">Oops!! Sorry, There is no content here</h1>
+    </div>`
+    noContent.appendChild(div)
+    
+    }
+    
     // console.log(data.data);
     data.data.forEach((card)=> {
         // console.log(card.authors[0].profile_name);
         // console.log(card.others.views);
+        
+        // console.log(card.others.posted_date);
+        
+
         
         const div = document.createElement('div');
     
@@ -48,8 +56,10 @@ const handleSingleCategory = async (categoryId) => {
         <figure>
           <img
             src="${card.thumbnail}"
-            alt="Shoes"
+            alt=""
           />
+          
+        
         </figure>
         <div class="card-body flex-row gap-3 flex-wrap">
             <div class="w-14 ">
@@ -87,6 +97,9 @@ const handleSingleCategory = async (categoryId) => {
     
     
     // console.log(categoryId);
+
+
+    
 }
 
 AllCategoryData();
