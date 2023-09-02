@@ -54,7 +54,7 @@ const handleSingleCategory = async (categoryId) => {
     
         div.innerHTML = `<div class="card bg-base-100 h-[400px] shadow-xl">
         <figure>
-          <img
+          <img class="h-[180px]"
             src="${card.thumbnail}"
             alt=""
           />
@@ -63,7 +63,7 @@ const handleSingleCategory = async (categoryId) => {
         </figure>
         <div class="card-body flex-row gap-3 flex-wrap">
             <div class="w-14 ">
-                <img class="rounded-full"
+                <img class="h-[50px] w-[50px] rounded-full"
                   src="${card.authors[0].profile_picture}"
                 />
               </div>
